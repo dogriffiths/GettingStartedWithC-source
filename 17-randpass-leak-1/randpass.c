@@ -10,7 +10,7 @@ char number_or_char(int x)
   return (char) y;
 }
 
-void generate_password()
+char * generate_password()
 {
   int len = (rand() % 250) + 5;
   char c[len];
@@ -21,14 +21,15 @@ void generate_password()
     c[i] = number_or_char(r);
   }
   c[i] = 0;
-  printf("Password is %s\n", c); 
+  return c;
 }
 
 int main()
 {
   srand(time(NULL));
   for (int i = 0; i < 3; i++) {
-    generate_password();
+    char *passwd = generate_password();
+    printf("Returned password is %s\n", passwd);
   }
   return 0;
 }
